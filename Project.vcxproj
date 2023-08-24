@@ -18,11 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{ac8c3710-67a2-4e28-9d89-aafbddf5eb27}</ProjectGuid>
-    <RootNamespace>Project</RootNamespace>
+    <ProjectGuid>{5bfe2cd8-b953-4b77-a9e1-11aa79b56a09}</ProjectGuid>
+    <RootNamespace>project</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -126,10 +132,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Project.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\Spire.XLS.Cpp.13.6.1\build\native\Spire.XLS.Cpp.targets" Condition="Exists('packages\Spire.XLS.Cpp.13.6.1\build\native\Spire.XLS.Cpp.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Spire.XLS.Cpp.13.6.1\build\native\Spire.XLS.Cpp.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Spire.XLS.Cpp.13.6.1\build\native\Spire.XLS.Cpp.targets'))" />
+  </Target>
 </Project>

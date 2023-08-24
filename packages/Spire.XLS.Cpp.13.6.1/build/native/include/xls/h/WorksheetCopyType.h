@@ -1,0 +1,27 @@
+#pragma once
+#include "pch.h"
+namespace Spire{
+namespace Xls{
+enum class WorksheetCopyType : int
+{
+    None = 0,
+    ClearBefore = 1,
+    CopyNames = 2,
+    CopyCells = 4,
+    CopyRowHeight = 8,
+    CopyColumnHeight = 16,
+    CopyOptions = 32,
+    CopyMerges = 64,
+    CopyShapes = 128,
+    CopyConditionlFormats = 256,
+    CopyAutoFilters = 512,
+    CopyDataValidations = 1024,
+    CopyPageSetup = 2048,
+    CopyTables = 2560,
+    CopyPivotTables = 4096,
+    CopyPalette = 8192,
+    CopyAll = 16383,
+    CopyWithoutNames = 8189,
+};
+using WorksheetCopyType_Type = std::underlying_type<WorksheetCopyType>::type;
+}}
